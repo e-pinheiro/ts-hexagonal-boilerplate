@@ -1,0 +1,36 @@
+{
+  "name": "ts-hexagonal-boilerplate",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only src/infrastructure/server/app.ts",
+    "build": "tsc",
+    "start": "node dist/infrastructure/server/app.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "docs:build": "redocly build-docs openapi.yaml",
+    "docs:serve": "redocly preview-docs openapi.yaml",
+    "docs:lint": "redocly lint openapi.yaml"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.13.5",
+    "@typescript-eslint/eslint-plugin": "^8.25.0",
+    "@typescript-eslint/parser": "^8.25.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.6",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.7.3"
+  }
+}
