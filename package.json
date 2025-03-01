@@ -10,7 +10,7 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "docs:build": "redocly build-docs openapi.yaml",
-    "docs:serve": "redocly preview-docs openapi.yaml",
+    "docs:serve": "redocly preview-docs openapi.yaml --config redocly.yaml",
     "docs:lint": "redocly lint openapi.yaml"
   },
   "keywords": [],
