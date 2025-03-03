@@ -1,5 +1,5 @@
 import { Group } from '../../entities/Group';
-import { CreateGroupDTO } from '../../dtos/group.dto';
+import { CreateGroupInputDTO } from '../../dtos/group.dto';
 import { IGroupRepository } from '../../ports/IGroupRepository';
 import { randomUUID } from 'crypto';
 
@@ -9,14 +9,14 @@ interface CreateGroupOutputDTO {
 }
 
 export class CreateGroupUseCase {
-  constructor(private groupRepository: IGroupRepository) { }
+  constructor(private groupRepository: IGroupRepository) {}
 
-  async execute(data: CreateGroupDTO): Promise<CreateGroupOutputDTO> {
+  async execute(data: CreateGroupInputDTO): Promise<CreateGroupOutputDTO> {
     const group = new Group({ name: data.name });
     const savedGroup = await this.groupRepository.save(group);
-    
+
     return {
-      id: savedGroup.id
+      id: savedGroup.id,
     };
   }
-} 
+}

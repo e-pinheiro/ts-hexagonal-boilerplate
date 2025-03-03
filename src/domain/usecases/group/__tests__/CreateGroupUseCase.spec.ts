@@ -1,7 +1,7 @@
 import { CreateGroupUseCase } from '../CreateGroupUseCase';
 import { IGroupRepository } from '../../../ports/IGroupRepository';
 import { Group } from '../../../entities/Group';
-import { CreateGroupDTO } from '../../../dtos/group.dto';
+import { CreateGroupInputDTO } from '../../../dtos/group.dto';
 
 describe('CreateGroupUseCase', () => {
   let createGroupUseCase: CreateGroupUseCase;
@@ -23,38 +23,40 @@ describe('CreateGroupUseCase', () => {
 
   it('should create a new group successfully', async () => {
     // Arrange
-    const groupData: CreateGroupDTO = {
-      name: 'Test Group'
+    const inputData: CreateGroupInputDTO = {
+      name: 'Test Group',
     };
 
-    const expectedGroup = new Group({ name: groupData.name });
+    const expectedGroup = new Group({ name: inputData.name });
     mockGroupRepository.save.mockResolvedValue(expectedGroup);
 
     // Act
-    const result = await createGroupUseCase.execute(groupData);
+    const result = await createGroupUseCase.execute(inputData);
 
     // Assert
-    expect(result).toHaveProperty('id');
+    expect(result).toBeDefined();
+    expect(result.id).toBeDefined();
     expect(mockGroupRepository.save).toHaveBeenCalledTimes(1);
     expect(mockGroupRepository.save).toHaveBeenCalledWith(
       expect.objectContaining({
-        name: groupData.name
-      })
+        name: inputData.name,
+      }),
     );
   });
 
   it('should throw an error if repository save fails', async () => {
     // Arrange
-    const groupData: CreateGroupDTO = {
-      name: 'Test Group'
+    const inputData: CreateGroupInputDTO = {
+      name: 'Test Group',
     };
 
     const expectedError = new Error('Failed to save group');
     mockGroupRepository.save.mockRejectedValue(expectedError);
 
     // Act & Assert
-    await expect(createGroupUseCase.execute(groupData))
-      .rejects
-      .toThrow(expectedError);
+    await expect(createGroupUseCase.execute(inputData)).rejects.toThrow(
+      expectedError,
+    );
+    expect(mockGroupRepository.save).toHaveBeenCalledTimes(1);
   });
-}); 
+});

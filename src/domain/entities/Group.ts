@@ -10,7 +10,7 @@ export class Group extends Entity<GroupProps> {
   constructor(props: GroupProps) {
     super({
       ...props,
-      createdAt: props.createdAt ?? new Date()
+      createdAt: props.createdAt ?? new Date(),
     });
   }
 
@@ -25,4 +25,4 @@ export class Group extends Entity<GroupProps> {
   get description(): string | undefined {
     return this.props.description;
   }
-} 
+}

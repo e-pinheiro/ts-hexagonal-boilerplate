@@ -6,4 +6,4 @@ export interface ValidationResult<T> {
 
 export interface ValidatorPort<T> {
   validate(input: unknown): ValidationResult<T>;
-} 
+}

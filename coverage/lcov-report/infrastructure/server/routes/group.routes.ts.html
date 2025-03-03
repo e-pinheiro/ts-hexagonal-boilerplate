@@ -128,7 +128,10 @@
 <a name='L63'></a><a href='#L63'>63</a>
 <a name='L64'></a><a href='#L64'>64</a>
 <a name='L65'></a><a href='#L65'>65</a>
-<a name='L66'></a><a href='#L66'>66</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -147,14 +150,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -191,27 +186,37 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import { Router, Request, Response } from 'express';</span>
-<span class="cstat-no" title="statement not covered" >import { GroupController } from '../../../adapters/controllers/GroupController';</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import { Router, Request, Response } from 'express';</span>
+&nbsp;
 <span class="cstat-no" title="statement not covered" >import { InMemoryGroupRepository } from '../../../adapters/repositories/InMemoryGroupRepository';</span>
 <span class="cstat-no" title="statement not covered" >import { CreateGroupUseCase } from '../../../domain/usecases/group/CreateGroupUseCase';</span>
 <span class="cstat-no" title="statement not covered" >import { UpdateGroupUseCase } from '../../../domain/usecases/group/UpdateGroupUseCase';</span>
 <span class="cstat-no" title="statement not covered" >import { DeleteGroupUseCase } from '../../../domain/usecases/group/DeleteGroupUseCase';</span>
 <span class="cstat-no" title="statement not covered" >import { GetGroupUseCase } from '../../../domain/usecases/group/GetGroupUseCase';</span>
 <span class="cstat-no" title="statement not covered" >import { ListGroupsUseCase } from '../../../domain/usecases/group/ListGroupsUseCase';</span>
+<span class="cstat-no" title="statement not covered" >import { GroupController } from '@/adapters/controllers/group/GroupController';</span>
 &nbsp;
 // Use dependency injection container or factory pattern
 const setupGroupRoutes = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(r</span>epository = <span class="branch-0 cbranch-no" title="branch not covered" >new InMemoryGroupRepository())</span> =&gt; {</span>
   const groupRouter = <span class="cstat-no" title="statement not covered" >Router();</span>
-  
+&nbsp;
   const controller = <span class="cstat-no" title="statement not covered" >new GroupController(</span>
     new CreateGroupUseCase(repository),
     new UpdateGroupUseCase(repository),
     new DeleteGroupUseCase(repository),
     new GetGroupUseCase(repository),
-    new ListGroupsUseCase(repository)
+    new ListGroupsUseCase(repository),
   );
 &nbsp;
   // Add async/await and error handling
@@ -258,14 +263,15 @@ const setupGroupRoutes = <span class="cstat-no" title="statement not covered" ><
 <span class="cstat-no" title="statement not covered" >  return groupRouter;</span>
 };
 &nbsp;
-export { <span class="cstat-no" title="statement not covered" >setupGroupRoutes </span>}; </pre></td></tr></table></pre>
+export { <span class="cstat-no" title="statement not covered" >setupGroupRoutes </span>};
+&nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-02-28T17:21:48.746Z
+                at 2025-03-03T16:30:08.297Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

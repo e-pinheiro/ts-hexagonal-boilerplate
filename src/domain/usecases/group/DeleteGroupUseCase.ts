@@ -6,4 +6,4 @@ export class DeleteGroupUseCase {
   async execute(id: string): Promise<void> {
     await this.groupRepository.delete(id);
   }
-} 
+}

@@ -11,7 +11,7 @@ describe('DeleteGroupUseCase', () => {
       findById: jest.fn(),
       save: jest.fn(),
       findAll: jest.fn(),
-      update: jest.fn()
+      update: jest.fn(),
     };
     deleteGroupUseCase = new DeleteGroupUseCase(mockGroupRepository);
   });
@@ -40,4 +40,4 @@ describe('DeleteGroupUseCase', () => {
     expect(mockGroupRepository.delete).toHaveBeenCalledWith(groupId);
     expect(mockGroupRepository.delete).toHaveBeenCalledTimes(1);
   });
-}); 
+});

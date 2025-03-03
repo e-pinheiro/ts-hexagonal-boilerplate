@@ -15,7 +15,7 @@ export class ListGroupsUseCase {
       id: group.id,
       name: group.name,
       description: group.description,
-      createdAt: group.createdAt
+      createdAt: group.createdAt,
     }));
   }
-} 
+}

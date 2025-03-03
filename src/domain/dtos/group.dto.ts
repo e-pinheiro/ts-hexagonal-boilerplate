@@ -1,9 +1,6 @@
-export interface CreateGroupDTO {
+export interface CreateGroupInputDTO {
   name: string;
   description?: string;
-  members: string[];
-  isPrivate: boolean;
-  maxMembers?: number;
 }
 
 export interface CreateGroupOutputDTO {
@@ -12,4 +9,4 @@ export interface CreateGroupOutputDTO {
 
 export interface UpdateGroupDTO {
   name: string;
-} 
+}

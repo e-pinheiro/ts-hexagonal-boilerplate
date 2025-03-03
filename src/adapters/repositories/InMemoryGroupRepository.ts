@@ -12,7 +12,7 @@ export class InMemoryGroupRepository implements IGroupRepository {
   async update(id: string, group: Group): Promise<Group | null> {
     const index = this.groups.findIndex(g => g.id === id);
     if (index === -1) return null;
-    
+
     this.groups[index] = group;
     return group;
   }
@@ -31,4 +31,4 @@ export class InMemoryGroupRepository implements IGroupRepository {
   async findAll(): Promise<Group[]> {
     return this.groups;
   }
-} 
+}

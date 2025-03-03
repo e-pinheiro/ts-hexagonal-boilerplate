@@ -6,4 +6,4 @@ export interface IGroupRepository {
   delete(id: string): Promise<void>;
   findById(id: string): Promise<Group | null>;
   findAll(): Promise<Group[]>;
-} 
+}

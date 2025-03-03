@@ -12,4 +12,4 @@ export class UpdateGroupUseCase {
     const updatedGroup = Group.restore(id, data);
     return await this.groupRepository.update(id, updatedGroup);
   }
-} 
+}

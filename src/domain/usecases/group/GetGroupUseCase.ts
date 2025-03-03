@@ -3,7 +3,7 @@ import { IGroupRepository } from '../../ports/IGroupRepository';
 import { GetGroupOutput } from '../../ports/output/GetGroupOutput';
 
 export class GetGroupUseCase {
-  constructor(private groupRepository: IGroupRepository) { }
+  constructor(private groupRepository: IGroupRepository) {}
 
   async execute(id: string): Promise<GetGroupOutput | null> {
     const group = await this.groupRepository.findById(id);
@@ -21,7 +21,6 @@ export class GetGroupUseCase {
       name: group.name,
       description: group.description,
       createdAt: group.createdAt,
-
     };
   }
-} 
+}
