@@ -1,5 +1,4 @@
-import { CreateGroupInputPort } from '@/domain/ports/input/CreateGroupInputPort';
-
+import { Request } from 'express';
 export interface GroupInputValidator {
-  validate(input: unknown): void;
+  validate(input: Request): void;
 }

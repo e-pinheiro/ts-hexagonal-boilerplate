@@ -2,7 +2,7 @@
 import express from 'express';
 import { config } from '../config/env';
 import { setupGroupRoutes } from './routes/group.routes';
-import { responseHandler } from './middlewares/response.handler';
+import { errorHandler } from './middlewares/errorHandler';
 
 export class App {
   public app: express.Application;
@@ -15,7 +15,6 @@ export class App {
 
   private middlewares(): void {
     this.app.use(express.json());
-    this.app.use(responseHandler);
   }
 
   private routes(): void {
@@ -23,6 +22,9 @@ export class App {
       res.json({ message: 'Hello Hexagonal Architecture!' });
     });
     this.app.use(setupGroupRoutes());
+
+    // Adicionar errorHandler depois das rotas
+    this.app.use(errorHandler);
   }
 
   public start(): void {

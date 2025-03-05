@@ -6,6 +6,7 @@ export class UpdateGroupUseCase {
   constructor(private groupRepository: IGroupRepository) {}
 
   async execute(id: string, data: UpdateGroupDTO): Promise<Group | null> {
+    console.log(`id: ${id} | data: ${data}`);
     const existingGroup = await this.groupRepository.findById(id);
     if (!existingGroup) return null;
 

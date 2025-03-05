@@ -6,72 +6,54 @@ import { GetGroupUseCase } from '../../../domain/usecases/group/GetGroupUseCase'
 import { ListGroupsUseCase } from '../../../domain/usecases/group/ListGroupsUseCase';
 import { GroupValidatorImpl } from './GroupInputValidator';
 import { GroupInputMapper } from './GroupInputMapper';
+import { NotFoundException } from '@/adapters/errors/notfound.exception';
 
 export class GroupController {
+  private validator: GroupValidatorImpl;
+
   constructor(
     private createGroupUseCase: CreateGroupUseCase,
     private updateGroupUseCase: UpdateGroupUseCase,
     private deleteGroupUseCase: DeleteGroupUseCase,
     private getGroupUseCase: GetGroupUseCase,
     private listGroupsUseCase: ListGroupsUseCase,
-  ) {}
-
-  async create(req: Request, res: Response): Promise<void> {
-    try {
-      // Validate the request body
-      new GroupValidatorImpl().validate(req.body);
-
-      // Map the request body to the input
-      const input = new GroupInputMapper().toInput(req.body);
-
-      // Create the group
-      const output = await this.createGroupUseCase.execute(input);
-      return res.success(output, 201);
-    } catch (error) {
-      return res.error((error as Error).message, 400);
-    }
+  ) {
+    this.validator = new GroupValidatorImpl();
   }
 
-  async update(req: Request, res: Response): Promise<void> {
-    try {
-      const group = await this.updateGroupUseCase.execute(
-        req.params.id,
-        req.body,
-      );
+  create = async (req: Request, res: Response): Promise<void> => {
+    this.validator.validate(req);
 
-      if (!group) return res.error('Group not found', 404);
+    const result = await this.createGroupUseCase.execute(req.body);
+    res.status(201).json(result);
+  };
 
-      return res.success({}, 204);
-    } catch (error) {
-      return res.error((error as Error).message, 400);
+  update = async (req: Request, res: Response): Promise<void> => {
+    const group = await this.updateGroupUseCase.execute(
+      req.params.id,
+      req.body,
+    );
+
+    if (!group) throw new NotFoundException('Group not found');
+    res.status(204).json({});
+  };
+
+  delete = async (req: Request, res: Response): Promise<void> => {
+    const id = await this.deleteGroupUseCase.execute(req.params.id);
+    if (!id) throw new NotFoundException('Group not found');
+    res.status(204).json({});
+  };
+
+  getById = async (req: Request, res: Response): Promise<void> => {
+    const result = await this.getGroupUseCase.execute(req.params.id);
+    if (!result) {
+      throw new NotFoundException('Group not found');
     }
-  }
+    res.json(result);
+  };
 
-  async delete(req: Request, res: Response): Promise<void> {
-    try {
-      await this.deleteGroupUseCase.execute(req.params.id);
-      return res.success({}, 204);
-    } catch (error) {
-      return res.error((error as Error).message, 400);
-    }
-  }
-
-  async getById(req: Request, res: Response): Promise<void> {
-    try {
-      const group = await this.getGroupUseCase.execute(req.params.id);
-      if (!group) return res.error('Group not found', 404);
-      return res.success(group, 200);
-    } catch (error) {
-      return res.error((error as Error).message, 400);
-    }
-  }
-
-  async list(req: Request, res: Response): Promise<void> {
-    try {
-      const groups = await this.listGroupsUseCase.execute();
-      return res.success(groups, 200);
-    } catch (error) {
-      return res.error((error as Error).message, 400);
-    }
-  }
+  list = async (req: Request, res: Response): Promise<void> => {
+    const groups = await this.listGroupsUseCase.execute();
+    res.status(200).json(groups);
+  };
 }
