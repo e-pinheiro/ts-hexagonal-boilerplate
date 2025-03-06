@@ -1,6 +1,6 @@
 import { ErrorRequestHandler } from 'express';
 import { ValidationException } from '@/adapters/errors/validation.exception';
-import { NotFoundException } from '@/adapters/errors/notfound.exception';
+import { NotFoundException } from '@/adapters/errors/not-found.exception';
 
 export const errorHandler: ErrorRequestHandler = (
   error: Error,

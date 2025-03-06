@@ -1,8 +1,8 @@
-import { CreateGroupInputDTO } from '@/domain/dtos/group.dto';
 import { InputMapper } from '@/adapters/framework/mappers/InputMapper.interface';
+import { CreateGroupInput } from '@/domain/usecases/group/create-group/create-group.input';
 
-export class GroupInputMapper implements InputMapper<CreateGroupInputDTO> {
-  toInput(input: unknown): CreateGroupInputDTO {
+export class GroupControllerMapper implements InputMapper<CreateGroupInput> {
+  toInput(input: unknown): CreateGroupInput {
     if (!input || typeof input !== 'object') {
       throw new Error('Invalid input');
     }

@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 
 import { GroupValidatorImpl } from './GroupInputValidator';
-import { NotFoundException } from '@/adapters/errors/notfound.exception';
+import { NotFoundException } from '@/adapters/errors/not-found.exception';
 import { CreateGroupUseCasePort } from '@/domain/ports/input/usecases/group/create-group.port';
 import { UpdateGroupUseCasePort } from '@/domain/ports/input/usecases/group/update-group.port';
 import { DeleteGroupUseCasePort } from '@/domain/ports/input/usecases/group/delete-group.port';

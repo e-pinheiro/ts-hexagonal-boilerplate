@@ -1,4 +1,4 @@
-import { GroupController } from '@/adapters/controllers/group/GroupController';
+import { GroupController } from '@/adapters/controllers/group/group.controller';
 import { InMemoryGroupRepository } from '@/adapters/repositories/InMemoryGroupRepository';
 import { CreateGroupUseCase } from '@/domain/usecases/group';
 import { UpdateGroupUseCase } from '@/domain/usecases/group/update-group/update-group.usecase';
