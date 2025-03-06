@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/17</span>
+                <span class='fraction'>0/18</span>
             </div>
         
             
@@ -39,14 +39,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>0/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/17</span>
+                <span class='fraction'>0/18</span>
             </div>
         
             
@@ -99,7 +99,11 @@
 <a name='L34'></a><a href='#L34'>34</a>
 <a name='L35'></a><a href='#L35'>35</a>
 <a name='L36'></a><a href='#L36'>36</a>
-<a name='L37'></a><a href='#L37'>37</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -112,16 +116,20 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -139,7 +147,7 @@
 <span class="cstat-no" title="statement not covered" >import express from 'express';</span>
 <span class="cstat-no" title="statement not covered" >import { config } from '../config/env';</span>
 <span class="cstat-no" title="statement not covered" >import { setupGroupRoutes } from './routes/group.routes';</span>
-<span class="cstat-no" title="statement not covered" >import { responseHandler } from './middlewares/response.handler';</span>
+<span class="cstat-no" title="statement not covered" >import { errorHandler } from './middlewares/errorHandler';</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >export class A</span>pp {
   public app: express.Application;
@@ -148,18 +156,22 @@
 <span class="cstat-no" title="statement not covered" >    this.app = express();</span>
 <span class="cstat-no" title="statement not covered" >    this.middlewares();</span>
 <span class="cstat-no" title="statement not covered" >    this.routes();</span>
+<span class="cstat-no" title="statement not covered" >    this.errorHandlers();</span>
   }
 &nbsp;
   private <span class="fstat-no" title="function not covered" >middlewares(</span>): void {
 <span class="cstat-no" title="statement not covered" >    this.app.use(express.json());</span>
-<span class="cstat-no" title="statement not covered" >    this.app.use(responseHandler);</span>
   }
 &nbsp;
   private <span class="fstat-no" title="function not covered" >routes(</span>): void {
-<span class="cstat-no" title="statement not covered" >    this.app.get('/', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >      res.json({ message: 'Hello Hexagonal Architecture!' });</span>
+<span class="cstat-no" title="statement not covered" >    this.app.get('/health-check', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      res.json({ message: 'ok' });</span>
     });
 <span class="cstat-no" title="statement not covered" >    this.app.use(setupGroupRoutes());</span>
+  }
+&nbsp;
+  private <span class="fstat-no" title="function not covered" >errorHandlers(</span>): void {
+<span class="cstat-no" title="statement not covered" >    this.app.use(errorHandler);</span>
   }
 &nbsp;
   public <span class="fstat-no" title="function not covered" >start(</span>): void {
@@ -178,7 +190,7 @@ const app = <span class="cstat-no" title="statement not covered" >new App();</sp
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-03-03T16:30:08.297Z
+                at 2025-03-06T08:08:13.045Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

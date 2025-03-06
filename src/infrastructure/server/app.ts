@@ -11,6 +11,7 @@ export class App {
     this.app = express();
     this.middlewares();
     this.routes();
+    this.errorHandlers();
   }
 
   private middlewares(): void {
@@ -18,12 +19,13 @@ export class App {
   }
 
   private routes(): void {
-    this.app.get('/', (req, res) => {
-      res.json({ message: 'Hello Hexagonal Architecture!' });
+    this.app.get('/health-check', (req, res) => {
+      res.json({ message: 'ok' });
     });
     this.app.use(setupGroupRoutes());
+  }
 
-    // Adicionar errorHandler depois das rotas
+  private errorHandlers(): void {
     this.app.use(errorHandler);
   }
 

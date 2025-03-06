@@ -1,7 +1,7 @@
 import { Group } from '../../domain/entities/Group';
-import { IGroupRepository } from '../../domain/ports/IGroupRepository';
+import { GroupRepositoryPort } from '../../domain/ports/output/repositories/group-repository.port';
 
-export class InMemoryGroupRepository implements IGroupRepository {
+export class InMemoryGroupRepository implements GroupRepositoryPort {
   private groups: Group[] = [];
 
   async save(group: Group): Promise<Group> {
