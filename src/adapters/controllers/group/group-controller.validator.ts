@@ -1,6 +1,6 @@
 import { Request } from 'express';
 import { GroupInputValidator } from '../../framework/GroupInputValidator';
-import ValidationErrorException from '@/adapters/framework/exceptions/ValidationErrorException';
+import ValidationErrorException from '@/adapters/framework/errors/validation.error';
 
 export class GroupValidatorImpl implements GroupInputValidator {
   validate(input: Request): void {

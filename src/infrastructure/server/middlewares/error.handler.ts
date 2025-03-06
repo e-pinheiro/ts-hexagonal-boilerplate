@@ -1,6 +1,6 @@
 import { ErrorRequestHandler } from 'express';
-import { ValidationException } from '@/adapters/errors/validation.exception';
-import { NotFoundException } from '@/adapters/errors/not-found.exception';
+import { ValidationError } from '@/adapters/errors/validation.error';
+import { NotFoundError } from '@/adapters/errors/not-found.error';
 
 export const errorHandler: ErrorRequestHandler = (
   error: Error,
@@ -8,7 +8,7 @@ export const errorHandler: ErrorRequestHandler = (
   res,
   next,
 ) => {
-  if (error instanceof ValidationException) {
+  if (error instanceof ValidationError) {
     console.error(error);
     res.status(400).json({
       error: 'Validation Error',
@@ -17,7 +17,7 @@ export const errorHandler: ErrorRequestHandler = (
     return;
   }
 
-  if (error instanceof NotFoundException) {
+  if (error instanceof NotFoundError) {
     console.error(`Errp customizado de NotFound`);
     console.error(error);
     res.status(404).json({

@@ -1,4 +1,4 @@
-import { Group } from '@/domain/entities/Group';
+import { Group } from '@/domain/entities/group.entity';
 
 import { GroupRepositoryPort } from '@/domain/ports/output/repositories/group-repository.port';
 import { UpdateGroupInput } from './update-group.input';

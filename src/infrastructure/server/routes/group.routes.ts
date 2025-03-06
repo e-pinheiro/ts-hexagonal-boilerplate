@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import { GroupControllerFactory } from '@/infrastructure/factories/GroupControllerFactory';
-import { routeHandler } from '../middlewares/routeHandler';
+import { GroupControllerFactory } from '@/infrastructure/factories/group-controller.factory';
+import { routeHandler } from '../middlewares/route.handler';
 
 export function setupGroupRoutes(): Router {
   const router = Router();

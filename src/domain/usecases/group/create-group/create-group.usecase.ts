@@ -1,4 +1,4 @@
-import { Group } from '@/domain/entities/Group';
+import { Group } from '@/domain/entities/group.entity';
 import { CreateGroupInput } from './create-group.input';
 import { GroupRepositoryPort } from '@/domain/ports/output/repositories/group-repository.port';
 import { CreateGroupOutput } from './create-group.output';

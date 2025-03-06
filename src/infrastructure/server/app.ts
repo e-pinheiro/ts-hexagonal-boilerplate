@@ -2,7 +2,7 @@
 import express from 'express';
 import { config } from '../config/env';
 import { setupGroupRoutes } from './routes/group.routes';
-import { errorHandler } from './middlewares/errorHandler';
+import { errorHandler } from './middlewares/error.handler';
 
 export class App {
   public app: express.Application;

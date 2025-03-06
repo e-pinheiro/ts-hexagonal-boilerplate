@@ -1,4 +1,4 @@
-import { Group } from '@/domain/entities/Group';
+import { Group } from '@/domain/entities/group.entity';
 import { GetGroupOutput } from './get-group.output';
 
 export class GetGroupMapper {
