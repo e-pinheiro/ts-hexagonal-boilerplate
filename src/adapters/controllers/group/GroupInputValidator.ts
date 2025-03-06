@@ -1,7 +1,6 @@
 import { Request } from 'express';
-import { ValidationException } from '@/adapters/errors/validation.exception';
 import { GroupInputValidator } from '../../framework/GroupInputValidator';
-import { StringValidator } from '@esp-labs/validators';
+import ValidationErrorException from '@/adapters/framework/exceptions/ValidationErrorException';
 
 export class GroupValidatorImpl implements GroupInputValidator {
   validate(input: Request): void {
@@ -9,17 +8,22 @@ export class GroupValidatorImpl implements GroupInputValidator {
       throw new Error('Invalid input');
     }
 
-    try {
-      const { name } = input.body as { name?: unknown };
+    const { name } = input.body as { name?: unknown };
 
-      // library
-      new StringValidator({
-        fieldName: 'name',
-        minLength: 4,
-        maxLength: 10,
-      }).validate(name);
-    } catch (error) {
-      throw new ValidationException([(error as Error).message]);
+    if (typeof name !== 'string') {
+      throw new ValidationErrorException(`${`name`} must be a string`);
+    }
+
+    if (name.length < 3) {
+      throw new ValidationErrorException(
+        `${`name`} must be at least ${3} characters long`,
+      );
+    }
+
+    if (name.length > 255) {
+      throw new ValidationErrorException(
+        `${`name`} must be at most ${255} characters long`,
+      );
     }
   }
 }
